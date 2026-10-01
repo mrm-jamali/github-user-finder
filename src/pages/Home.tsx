@@ -1,13 +1,19 @@
-import React from 'react'
+import Footer from "../components/Footer"
+import Header from "../components/Header"
+import Nav from "../components/Nav"
+import PopularUsers from "../components/PopularUsers"
+import Users from "../components/Users"
 
-function 
-<nav />() {
+function Home() {
   return (
     <div>
-        <Nav />
+        
+        <Header />
+     
+        <Users />
+          <PopularUsers />
     </div>
   )
 }
 
-export default 
-<nav />
+export default Home
