@@ -1,10 +1,17 @@
 import UserCard from "./UserCard"
 
+import type {GitHubUser} from  "../types/users";
 
-function Users() {
+type usersProps={
+  users:GitHubUser[]
+}
+
+function Users({users}:usersProps) {
   return (
     <div>
-    <UserCard />
+      hi
+      {users.map(user=> <UserCard user={user} />)}
+   
     </div>
   )
 }

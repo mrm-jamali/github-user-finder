@@ -1,26 +1,30 @@
 import { LuHeart } from "react-icons/lu";
-
-function UserCard() {
+type userCardProps={
+  user:GitHubUser;
+}
+function UserCard({user}:userCardProps) {
   return (
     <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-7 mt-8 mb-10">
 
       {/* User Info */}
+
+   
       <div className="flex items-start gap-4">
         <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center shrink-0">
-          pic
+     <img src={user.avatar_url} alt={user.login} />
         </div>
 
         <div className="min-w-0 flex-1">
           <p className="text-lg font-bold text-gray-900 truncate">
-            name
+            {user.login}
           </p>
 
           <p className="text-sm text-gray-500 truncate">
-            username
+      {user.html_url}
           </p>
 
           <p className="text-sm text-blue-600 font-medium">
-            تخصص
+           {user.type}
           </p>
 
           <p className="text-sm text-gray-500">

@@ -1,7 +1,13 @@
 import { FaGithub } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 
-function Header() {
+
+type HeaderProps = {
+  search: string;
+  setSearch: (value: string) => void;
+}
+function Header({ search, setSearch }:HeaderProps) {
+
   return (
    <div className="flex justify-center items-center flex-col gap-4 bg-gradient-to-br from-blue-950 via-blue-800 to-blue-500 text-white py-10 sm:py-6 md:py-10">
       <div className="flex justify-center items-center flex-col gap-4 text-white">
@@ -17,7 +23,7 @@ function Header() {
       <FiSearch size={22} className="text-gray-500 shrink-0" />
 
       <input
-        type="text"
+        type="text" value={search} onChange={(event)=>{setSearch(event.target.value)}}
         placeholder="Search for Users"
         className="w-full min-w-0 outline-none text-gray-700 placeholder:text-gray-400"
       />

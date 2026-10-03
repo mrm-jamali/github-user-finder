@@ -3,6 +3,7 @@ import  PopularUsersCard from './PopularUsersCard'
 import { FiArrowRight } from "react-icons/fi";
 
 function PopularUsers() {
+
   return (
     <div className='bg-gray-200 text-white p-4 sm:p-6 md:p-8'>
       <div className='flex justify-between items-center mb-4'>
