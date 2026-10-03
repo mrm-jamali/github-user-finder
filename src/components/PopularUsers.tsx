@@ -18,6 +18,7 @@ function PopularUsers() {
         <PopularUsersCard />
       </div>
     </div>
+    
   )
 }
 
