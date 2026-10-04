@@ -5,27 +5,30 @@ import Users from "../components/Users";
 import { searchGitHubUsers } from "../api/githubApi";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpi from "../components/LoadingSpi";
+import ErrorMessage from "../components/ErrorMessage";
 
 function Home() {
   const [search, setSearch] = useState("");
 
-  const { data, error, isLoading } = useQuery({
+  const { data, error, isLoading,refetch} = useQuery({
     queryKey: ["users", search],
     queryFn: () => searchGitHubUsers({ search }),
     enabled: search.trim().length > 0,
   });
   // console.log(data);
- 
-  if (error) {
-    return <div>error</div>
-  }
+
   return (
     <div>
       <Header search={search} setSearch={setSearch} />
-      {isLoading  ?<LoadingSpi /> : <Users users={data?.items ?? []} />
-      }
-
+      {isLoading ? (
+        <LoadingSpi />
+      ) : error ? (
       
+          <ErrorMessage onRetry={refetch} />
+       
+      ) : (
+        <Users users={data?.items ?? []} />
+      )}
       <PopularUsers />
     </div>
   );
