@@ -1,75 +1,111 @@
 import { LuHeart } from "react-icons/lu";
+import { useQuery } from "@tanstack/react-query";
+import { getGitHubUser } from "../api/githubApi";
+
 type userCardProps={
   user:GitHubUser;
 }
 function UserCard({user}:userCardProps) {
-  return (
-    <div className="w-full max-w-md mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-7 mt-8 mb-10">
+const {data,isLoading,error}=useQuery({
+  queryKey:["user",user.login],
+  queryFn:()=>getGitHubUser({login:user.login}),
+})
+console.log(data);
 
-      {/* User Info */}
 
-   
-      <div className="flex items-start gap-4">
-        <div className="w-20 h-20 rounded-full bg-gray-200 flex items-center justify-center shrink-0">
-     <img src={user.avatar_url} alt={user.login} />
+return (
+  <div className="w-full max-w-[1100px] mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-4 mt-5 mb-5">
+
+    {/* User Info */}
+    <div className="flex items-center gap-4">
+
+      {/* Avatar */}
+      <div className="w-16 h-16 rounded-full bg-gray-200 overflow-hidden shrink-0">
+        <img
+          className="w-full h-full object-cover"
+          src={user.avatar_url}
+          alt={user.login}
+        />
+      </div>
+
+      {/* Main Info */}
+      <div className="min-w-0 flex-1">
+        <p className="text-lg font-bold text-gray-900">
+          {user.login}
+        </p>
+
+        <p className="text-sm text-gray-500 truncate">
+          {user.html_url}
+        </p>
+
+        <div className="flex items-center gap-4 mt-1 text-xs text-gray-500">
+          <span>{user.type}</span>
+          <span>📍 {data?.location ?? "Unknown"}</span>
+          <span>
+            Joined{" "}
+            {data?.created_at
+              ? new Date(data.created_at).toLocaleDateString()
+              : "Unknown"}
+          </span>
         </div>
+      </div>
 
-        <div className="min-w-0 flex-1">
-          <p className="text-lg font-bold text-gray-900 truncate">
-            {user.login}
-          </p>
+      {/* Actions */}
+      <div className="flex items-center gap-2 shrink-0">
 
-          <p className="text-sm text-gray-500 truncate">
-      {user.html_url}
-          </p>
-
-          <p className="text-sm text-blue-600 font-medium">
-           {user.type}
-          </p>
-
-          <p className="text-sm text-gray-500">
-            📍 location
-          </p>
-
-          <p className="text-xs text-gray-400">
-            Joined date
-          </p>
-        </div>
-
-        <button className="text-gray-400 hover:text-red-500 transition-colors">
-          <LuHeart size={24} />
+        <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors">
+          Follow
         </button>
+
+        <button className="px-4 py-2 border border-blue-600 text-blue-600 hover:bg-blue-50 text-sm font-semibold rounded-lg transition-colors">
+          Profile
+        </button>
+
+        <button className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
+          <LuHeart size={21} />
+        </button>
+
       </div>
-
-      {/* Follow */}
-      <button className="w-full mt-5 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-2.5 rounded-lg transition-colors">
-        Follow
-      </button>
-
-      {/* Stats */}
-      <div className="flex justify-between border-t border-b border-gray-200 my-5 py-4 text-center">
-        <div>
-          <p className="text-lg font-bold text-gray-900">20</p>
-          <p className="text-xs text-gray-500">Repositories</p>
-        </div>
-
-        <div>
-          <p className="text-lg font-bold text-gray-900">120</p>
-          <p className="text-xs text-gray-500">Followers</p>
-        </div>
-
-        <div>
-          <p className="text-lg font-bold text-gray-900">50</p>
-          <p className="text-xs text-gray-500">Following</p>
-        </div>
-      </div>
-
-      {/* Profile Button */}
-      <button className="w-full bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-2.5 rounded-lg transition-colors">
-        View Profile
-      </button>
     </div>
-  );
+
+    {/* Stats */}
+    <div className="grid grid-cols-3 border-t border-gray-100 mt-4 pt-3 text-center">
+
+      <div>
+        <p className="text-base font-bold text-gray-900">
+          {data?.public_repos ?? 0}
+        </p>
+        <p className="text-[11px] text-gray-500">
+          Repositories
+        </p>
+      </div>
+
+      <div className="border-x border-gray-200">
+        <p className="text-base font-bold text-gray-900">
+          {data?.followers ?? 0}
+        </p>
+        <p className="text-[11px] text-gray-500">
+          Followers
+        </p>
+      </div>
+
+      <div>
+        <p className="text-base font-bold text-gray-900">
+          {data?.following ?? 0}
+        </p>
+        <p className="text-[11px] text-gray-500">
+          Following
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+);
+
+
+
+
 }
 
 export default UserCard;
