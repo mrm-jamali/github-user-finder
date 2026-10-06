@@ -3,7 +3,7 @@ import type { GitHubUser } from "../types/users";
 
 type usersProps = {
   users: GitHubUser[];
-};
+}; 
 
 function Users({ users }: usersProps) {
   return (

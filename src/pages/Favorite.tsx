@@ -1,8 +1,12 @@
-import React from 'react'
+
 
 function Favorite() {
+    
   return (
-    <div>favarite</div>
+    <div className="min-h-[500px]">
+       <UserCard key={user.login} user={user} />
+
+    </div>
   )
 }
 
