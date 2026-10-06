@@ -5,13 +5,9 @@ import { favoriteContext } from "../context/FavoriteContext";
 import { useContext } from "react";
 import type { GitHubUser } from "../types/users";
 
-
-
-
 type userCardProps = {
   user: GitHubUser;
 };
-
 
 function UserCard({ user }: userCardProps) {
   const { data, isLoading, error } = useQuery({
@@ -20,7 +16,7 @@ function UserCard({ user }: userCardProps) {
   });
   // console.log(data);
 
-const {addFavarite}=useContext(favoriteContext)
+  const { addFavarite } = useContext(favoriteContext);
 
   return (
     <div className="w-full max-w-[1100px] mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-4 mt-5 mb-5">
@@ -54,27 +50,32 @@ const {addFavarite}=useContext(favoriteContext)
         </div>
 
         {/* Actions */}
-       {/* Actions */}
-<div className="flex items-center shrink-0">
-  <div className="flex items-center gap-2 mr-10">
-    <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors">
-      Follow
-    </button>
+        {/* Actions */}
+        <div className="flex items-center shrink-0">
+          <div className="flex items-center gap-2 mr-10">
+            <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-lg transition-colors">
+              Follow
+            </button>
 
-    <a
-      target="_blank"
-      href={user.html_url}
-      rel="noopener noreferrer"
-      className="px-4 py-2 border border-blue-600 text-blue-600 hover:bg-blue-50 text-sm font-semibold rounded-lg transition-colors"
-    >
-      Profile
-    </a>
-  </div>
+            <a
+              target="_blank"
+              href={user.html_url}
+              rel="noopener noreferrer"
+              className="px-4 py-2 border border-blue-600 text-blue-600 hover:bg-blue-50 text-sm font-semibold rounded-lg transition-colors"
+            >
+              Profile
+            </a>
+          </div>
 
-  <button onClick={()=>{addFavarite(user)}} className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors">
-    <LuHeart size={21} />
-  </button>
-</div>
+          <button
+            onClick={() => {
+              addFavarite(user);
+            }}
+            className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
+          >
+            <LuHeart size={21} />
+          </button>
+        </div>
       </div>
 
       {/* Stats */}
