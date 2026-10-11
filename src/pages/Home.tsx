@@ -1,15 +1,18 @@
 import Header from "../components/Header";
-import { useState } from "react";
+
 import PopularUsers from "../components/PopularUsers";
 import Users from "../components/Users";
 import { searchGitHubUsers } from "../api/githubApi";
 import { useQuery } from "@tanstack/react-query";
 import LoadingSpi from "../components/LoadingSpi";
 import ErrorMessage from "../components/ErrorMessage";
+import { useSearchContext } from "../context/SearchContext";
+
+
 
 function Home() {
-  const [search, setSearch] = useState("");
 
+const {search,setSearch}=useSearchContext()
   const { data, error, isLoading,refetch} = useQuery({
     queryKey: ["users", search],
     queryFn: () => searchGitHubUsers({ search }),
