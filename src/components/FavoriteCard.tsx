@@ -21,7 +21,10 @@ function FavoriteCard({ user }: userCardProps) {
 );
 
   return (
+
+   
     <div className="w-full h-[400px] bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-5">
+      
       {/* User Info */}
       <div className="flex flex-col h-full">
 
