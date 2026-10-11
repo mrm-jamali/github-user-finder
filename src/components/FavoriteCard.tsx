@@ -15,7 +15,10 @@ function FavoriteCard({ user }: userCardProps) {
     queryFn: () => getGitHubUser({ login: user.login }),
   });
 
-  const { addFavarite } = useContext(favoriteContext);
+  const { FavoriteUsers,RemoveFavarite } = useContext(favoriteContext);
+   const isFavorite = FavoriteUsers.some(
+  (favoriteUser) => favoriteUser.login === user.login
+);
 
   return (
     <div className="w-full h-[400px] bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-5">
@@ -73,11 +76,11 @@ function FavoriteCard({ user }: userCardProps) {
 
           <button
             onClick={() => {
-              addFavarite(user);
+             RemoveFavarite(user);
             }}
             className="p-2.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
           >
-            <LuHeart size={21} />
+            <LuHeart size={21}  fill={isFavorite ? "red" : "white"}  color={isFavorite ? "red" : "gray"} />
           </button>
         </div>
 

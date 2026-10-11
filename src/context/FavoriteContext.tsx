@@ -11,22 +11,32 @@ type FavoriteContextType = {
   FavoriteUsers: GitHubUser[];
   setFavoriteUsers: React.Dispatch<React.SetStateAction<GitHubUser[]>>;
   addFavarite: (user: GitHubUser) => void;
+  RemoveFavarite:(user:GitHubUser)=>void;
 };
 
-  export const favoriteContext = createContext<FavoriteContextType>(
+export const favoriteContext = createContext<FavoriteContextType>(
   {} as FavoriteContextType,
 );
+
 function FavoriteProvider({ children }: Props) {
   const [FavoriteUsers, setFavoriteUsers] = useState<GitHubUser[]>([]);
 
   const addFavarite = (user: GitHubUser) => {
-    console.log("favariteuser",user)
-    setFavoriteUsers((prev) => [...prev, user]);
+    if (
+     FavoriteUsers.some((FavoriteUser) => FavoriteUser.login === user.login)
+    ) {
+      return;
+    } 
+    console.log("favariteuser", user);
+      setFavoriteUsers((prev) => [...prev, user]);
   };
+  const  RemoveFavarite=(user: GitHubUser)=> {
+setFavoriteUsers(FavoriteUsers.filter((FavoriteUser)=>FavoriteUser.login!==user.login))
+  }
 
   return (
     <favoriteContext.Provider
-      value={{ FavoriteUsers, setFavoriteUsers, addFavarite }}
+      value={{ FavoriteUsers, setFavoriteUsers, addFavarite,RemoveFavarite }}
     >
       {children}
     </favoriteContext.Provider>

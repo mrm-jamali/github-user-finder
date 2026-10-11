@@ -16,7 +16,10 @@ function UserCard({ user }: userCardProps) {
   });
   // console.log(data);
 
-  const { addFavarite } = useContext(favoriteContext);
+  const { addFavarite, FavoriteUsers } = useContext(favoriteContext);
+  const isFavorite = FavoriteUsers.some(
+  (favoriteUser) => favoriteUser.login === user.login
+);
 
   return (
     <div className="w-full max-w-[1100px] mx-auto bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow p-4 mt-5 mb-5">
@@ -73,7 +76,7 @@ function UserCard({ user }: userCardProps) {
             }}
             className="p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors"
           >
-            <LuHeart size={21} />
+            <LuHeart size={21} fill={isFavorite ? "red" : "white"}  color={isFavorite ? "red" : "gray"} />
           </button>
         </div>
       </div>
