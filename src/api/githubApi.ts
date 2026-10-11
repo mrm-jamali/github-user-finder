@@ -13,5 +13,11 @@ const getGitHubUser=async({login}:Props)=>{
   const response=await axios.get(`https://api.github.com/users/${login}`)
   return response.data
 }
-;
-export { searchGitHubUsers,getGitHubUser};
+const getPopularUsers = async () => {
+  const response = await axios.get<GitHubSearchResponse>(
+    "https://api.github.com/search/users?q=followers:%3E10000&sort=followers&order=desc&per_page=6"
+  );
+
+  return response.data;
+};
+export { searchGitHubUsers,getGitHubUser,getPopularUsers };
