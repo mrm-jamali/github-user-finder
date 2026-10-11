@@ -12,6 +12,7 @@ function Nav() {
   <Link to="/">Home</Link>
   <Link to="/favorite">Favorite</Link>
   <Link to="/about">About</Link>
+  
 </div>
     </div>
   );
