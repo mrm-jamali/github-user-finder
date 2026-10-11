@@ -22,9 +22,9 @@ function UserCard({ user }: userCardProps) {
   );
 
   return (
-    <div className="mx-auto mt-5 mb-5 w-full max-w-[1100px] rounded-xl bg-white p-3 shadow-md transition-shadow hover:shadow-lg sm:p-4">
+    <div className="mx-auto mt-5 mb-5 w-[90%] max-w-[1100px] rounded-xl bg-white p-4 shadow-md transition-shadow hover:shadow-lg md:w-full">
       {/* User Info */}
-      <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+      <div className="flex flex-col gap-5 md:flex-row md:items-center md:gap-4">
         {/* Avatar */}
         <div className="flex min-w-0 items-center gap-3 sm:gap-4">
           <div className="h-14 w-14 shrink-0 overflow-hidden rounded-full bg-gray-200 sm:h-16 sm:w-16">
@@ -59,8 +59,8 @@ function UserCard({ user }: userCardProps) {
         </div>
 
         {/* Actions */}
-        <div className="flex items-center justify-between gap-2 sm:ml-auto sm:justify-start">
-          <div className="flex items-center gap-2 sm:mr-2 md:mr-6">
+        <div className="flex items-center justify-between gap-2 md:ml-auto md:justify-start">
+          <div className="flex items-center gap-2 md:mr-6">
             <button className="rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:px-4">
               Follow
             </button>

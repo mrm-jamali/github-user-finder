@@ -13,4 +13,5 @@ const getGitHubUser=async({login}:Props)=>{
   const response=await axios.get(`https://api.github.com/users/${login}`)
   return response.data
 }
-export { searchGitHubUsers,getGitHubUser };
+;
+export { searchGitHubUsers,getGitHubUser};

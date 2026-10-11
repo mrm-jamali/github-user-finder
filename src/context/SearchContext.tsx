@@ -1,5 +1,6 @@
 import { createContext,useState, useContext } from "react";
 import { ReactNode } from "react";
+import { useEffect } from "react";
 
 
 type SearchContextType={
@@ -12,7 +13,11 @@ type Props={
 
   export  const SearchedContext=createContext<SearchContextType | undefined>(undefined)
 function SearchContext({children}:Props) {
-      const [search, setSearch] = useState("");
+      const [search, setSearch] = useState(() => {
+  return localStorage.getItem("github-search") ?? "";});
+  useEffect(() => {
+  localStorage.setItem("github-search", search);
+}, [search]);
 
   
   return (
