@@ -54,7 +54,7 @@ function Home() {
           <button
             onClick={() => fetchNextPage()}
             disabled={isFetchingNextPage}
-            className="rounded-lg bg-blue-600 px-6 py-3 text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
+            className="rounded-lg bg-emerald-600 px-6 py-3 text-white transition hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-60"
           >
             {isFetchingNextPage ? "Loading..." : "Load More"}
           </button>

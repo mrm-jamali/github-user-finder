@@ -24,7 +24,7 @@ function NotUserFound() {
 
         <Link
           to="/"
-          className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-blue-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
+          className="mt-7 inline-flex items-center justify-center gap-2 rounded-xl bg-emerald-600 px-6 py-3 font-medium text-white transition hover:bg-blue-700"
         >
           <LuHouse size={18} />
           Back to Home
