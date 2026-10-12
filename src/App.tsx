@@ -4,8 +4,9 @@ import Favorite from "./pages/Favorite";
 import About from "./pages/About";
 import Nav from "./components/Nav";
 import Footer from "./components/Footer";
-import { QueryClientProvider } from "@tanstack/react-query";
+
 import { QueryClient } from "@tanstack/react-query";
+import NotUserFound from "./pages/NotUserFound";
 import { PersistQueryClientProvider } from "@tanstack/react-query-persist-client";
 import { createSyncStoragePersister } from "@tanstack/query-sync-storage-persister";
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/favorite" element={<Favorite />} />
             <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotUserFound />} />
           </Routes>
         </main>
         <Footer />
