@@ -10,7 +10,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <FavoriteProvider>
       <SearchContext>
-    <BrowserRouter>
+  <BrowserRouter basename="/github-user-finder">
       <App />
     </BrowserRouter>
     </SearchContext>

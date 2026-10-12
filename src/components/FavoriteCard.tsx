@@ -10,7 +10,7 @@ type userCardProps = {
 };
 
 function FavoriteCard({ user }: userCardProps) {
-  const { data, isLoading, error } = useQuery({
+  const { data } = useQuery({
     queryKey: ["user", user.login],
     queryFn: () => getGitHubUser({ login: user.login }),
   });
