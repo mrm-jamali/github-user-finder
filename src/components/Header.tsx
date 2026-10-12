@@ -17,7 +17,7 @@ function Header({ search, setSearch }: HeaderProps) {
         </h2>
 
         <p className="max-w-2xl text-center text-sm font-semibold sm:text-base">
-          Search for any github Users and explore their profile,re positories
+          Search for any github Users and explore their profile,repositories
           and followers and more!
         </p>
 
