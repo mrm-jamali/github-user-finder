@@ -3,13 +3,13 @@ import type { GitHubUser } from "../types/users";
 
 type usersProps = {
   users: GitHubUser[];
-}; 
+};
 
 function Users({ users }: usersProps) {
   return (
-    <div className="min-h-[500px]">
+    <div className="min-h-[300px]">
       {users.length === 0 ? (
-        <div className="min-h-[500px] flex items-center justify-center px-4">
+        <div className="flex min-h-[300px] items-center justify-center px-4">
           <div className="text-center">
             <p className="text-xl font-semibold text-gray-700">
               Search for a GitHub user

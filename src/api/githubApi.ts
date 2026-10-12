@@ -2,8 +2,8 @@ import axios from "axios";
 import type {SearchProps } from "../types/users";
 import type { GitHubSearchResponse } from "../types/users";
 
-const searchGitHubUsers=async({search}:SearchProps)=>{
-const response=await axios.get<GitHubSearchResponse>(`https://api.github.com/search/users?q=${search}`)
+const searchGitHubUsers=async({search,page=1,per_page=10}:SearchProps)=>{
+const response=await axios.get<GitHubSearchResponse>(`https://api.github.com/search/users?q=${search}&page=${page}&per_page=${per_page}`)
   return response.data;
 }
 type Props={

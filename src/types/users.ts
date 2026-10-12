@@ -7,7 +7,10 @@ export type GitHubUser = {
 };
 
 export type SearchProps = {
-  search: string;}
+  search: string;
+  page?:number;
+  per_page?:number;
+}
 
  export type GitHubSearchResponse ={
       total_count: number;
