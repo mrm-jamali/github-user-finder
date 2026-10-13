@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import PopularUsersCard from "./PopularUsersCard";
-import { FiArrowRight } from "react-icons/fi";
+
 import { getPopularUsers } from "../api/githubApi";
 
 function PopularUsers() {

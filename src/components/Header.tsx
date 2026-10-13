@@ -8,7 +8,7 @@ type HeaderProps = {
   setSubmittedSearch: (value: string) => void
 };
 
-function Header({ search, setSearch,submittedSearch,  setSubmittedSearch}: HeaderProps) {
+function Header({ search, setSearch,  setSubmittedSearch}: HeaderProps) {
   const SearchHandler=()=>{
     
 setSubmittedSearch(search)
