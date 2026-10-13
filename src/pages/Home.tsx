@@ -8,9 +8,12 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import LoadingSpi from "../components/LoadingSpi";
 import ErrorMessage from "../components/ErrorMessage";
 import { useSearchContext } from "../context/SearchContext";
+import { useState } from "react";
 
 function Home() {
   const { search, setSearch } = useSearchContext();
+  const [submittedSearch,setSubmittedSearch]=useState("")
+  
   const {
     data,
     error,
@@ -20,9 +23,9 @@ function Home() {
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ["users", search],
+    queryKey: ["users", submittedSearch],
     queryFn: ({ pageParam }) =>
-      searchGitHubUsers({ search, page: pageParam, per_page: 10 }),
+      searchGitHubUsers({search: submittedSearch, page: pageParam, per_page: 10 }),
     initialPageParam: 1,
     getNextPageParam: (lastPage, allPages) => {
       console.log("lastPage:", lastPage);
@@ -34,14 +37,14 @@ function Home() {
 
       return lastPage.items.length === 10 ? allPages.length + 1 : undefined;
     },
-    enabled: search.trim().length > 0,
+    enabled: submittedSearch.trim().length > 0,
   });
   // console.log(data);
   const users = data?.pages.flatMap((page) => page.items) ?? [];
 
   return (
     <div>
-      <Header search={search} setSearch={setSearch} />
+      <Header search={search} setSearch={setSearch}  submittedSearch={submittedSearch} setSubmittedSearch={setSubmittedSearch} />
       {isLoading ? (
         <LoadingSpi />
       ) : error ? (

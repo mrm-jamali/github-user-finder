@@ -61,9 +61,9 @@ function UserCard({ user }: userCardProps) {
         {/* Actions */}
         <div className="flex items-center justify-between gap-2 md:ml-auto md:justify-start">
           <div className="flex items-center gap-2 md:mr-6">
-            <button className="rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:px-4">
+            {/* <button className="rounded-lg bg-blue-600 px-3 py-2 text-sm font-semibold text-white transition-colors hover:bg-blue-700 sm:px-4">
               Follow
-            </button>
+            </button> */}
 
             <a
               target="_blank"

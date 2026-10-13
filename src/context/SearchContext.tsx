@@ -12,6 +12,7 @@ type Props={
 }
 
   export  const SearchedContext=createContext<SearchContextType | undefined>(undefined)
+  
 function SearchContext({children}:Props) {
       const [search, setSearch] = useState(() => {
   return localStorage.getItem("github-search") ?? "";});

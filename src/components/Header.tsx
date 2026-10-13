@@ -4,9 +4,15 @@ import { FiSearch } from "react-icons/fi";
 type HeaderProps = {
   search: string;
   setSearch: (value: string) => void;
+  submittedSearch:string;
+  setSubmittedSearch: (value: string) => void
 };
 
-function Header({ search, setSearch }: HeaderProps) {
+function Header({ search, setSearch,submittedSearch,  setSubmittedSearch}: HeaderProps) {
+  const SearchHandler=()=>{
+    
+setSubmittedSearch(search)
+  }
   return (
     <div className="flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-blue-950 via-blue-800 to-blue-500 px-4  text-white sm:gap-5 sm:py-10">
       <div className="flex w-full flex-col items-center justify-center gap-4 text-white">
@@ -37,7 +43,7 @@ function Header({ search, setSearch }: HeaderProps) {
               />
             </div>
 
-            <button
+            <button onClick={SearchHandler}
               className="shrink-0 rounded-r-lg bg-emerald-600 px-3 py-2 text-sm font-semibold text-white shadow-md transition-all duration-200 hover:bg-emerald-700 hover:shadow-lg active:bg-emerald-800 sm:px-6 sm:text-base"
             >
               Search
