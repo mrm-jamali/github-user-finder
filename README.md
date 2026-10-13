@@ -1,75 +1,85 @@
-# React + TypeScript + Vite
+# GitHub User Finder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive web application for searching GitHub users, exploring developer profiles, and managing favorite users.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+**Live Demo:** [View Project](https://mrm-jamali.github.io/github-user-finder/)
 
-## React Compiler
+## Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Built with React, TypeScript, and TanStack Query, this project integrates the GitHub REST API to explore developers, discover popular users, and practice efficient server-state management.
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Screenshots
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Home Page
+![Home Page](./screenshots/Home.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Favorite Page
+![Favorite Page](./screenshots/Favorite.png)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### About Page
+![About Page](./screenshots/About.png)
 
+
+## Features
+
+- **User Search:** Search for GitHub users by entering a query and clicking the Search button.
+- **Infinite Scrolling / Load More:** Fetch paginated search results using `useInfiniteQuery`.
+- **Popular Users:** Discover developers ranked by follower count.
+- **User Details:** View profile information, including followers, following, and public repositories.
+- **Favorites:** Add and remove favorite users using React Context.
+- **Persistent Search:** Preserve the search input and cached results when navigating between pages.
+- **Loading & Error States:** Handle API loading and error scenarios.
+- **Responsive UI:** Support different screen sizes.
+- **Routing:** Navigate between Home, Favorites, and About pages.
+
+## Tech Stack
+
+- React
+- TypeScript
+- Tailwind CSS
+- TanStack Query
+- Axios
+- React Router
+- React Context API
+- React Icons
+- GitHub REST API
+
+## Key Technical Highlights
+
+- Used `useInfiniteQuery` for paginated data fetching and caching.
+- Managed query execution with separate input and submitted search states.
+- Used query keys to manage cached results for different searches.
+- Integrated GitHub APIs through reusable Axios functions.
+- Shared application state using React Context.
+
+## Getting Started
+
+```bash
+git clone https://github.com/mrm-jamali/github-user-finder.git
+cd github-user-finder
+npm install
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Open the local URL provided by Vite.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## API
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- [GitHub REST API Documentation](https://docs.github.com/en/rest)
+- [User Search API](https://api.github.com/search/users?q=react)
 
-```
+Unauthenticated requests are subject to GitHub API rate limits.
+
+## What I Learned
+
+- Implementing infinite queries with TanStack Query.
+- Managing API caching and pagination.
+- Separating input state from submitted search state.
+- Sharing state with React Context.
+- Building responsive, reusable React components.
+
+## Author
+
+**Maryam Jamali** — [GitHub](https://github.com/mrm-jamali)
