@@ -12,7 +12,7 @@ import { useState } from "react";
 
 function Home() {
   const { search, setSearch } = useSearchContext();
-  const [submittedSearch,setSubmittedSearch]=useState("")
+  const [submittedSearch,setSubmittedSearch]=useState(search)
   
   const {
     data,

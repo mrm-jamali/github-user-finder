@@ -1,5 +1,5 @@
 import { createContext, useState } from "react";
-
+import { useEffect } from "react";
 import type { ReactNode } from "react";
 import type { GitHubUser } from "../types/users";
 
@@ -19,7 +19,18 @@ export const favoriteContext = createContext<FavoriteContextType>(
 );
 
 function FavoriteProvider({ children }: Props) {
-  const [FavoriteUsers, setFavoriteUsers] = useState<GitHubUser[]>([]);
+ const [FavoriteUsers, setFavoriteUsers] = useState<GitHubUser[]>(()=>{const p= localStorage.getItem("favariteuser");
+  if (p) {
+   return JSON.parse(p)
+  }
+  return []
+ });
+    useEffect(() => {
+     
+         localStorage.setItem("favariteuser",JSON.stringify(FavoriteUsers));
+      
+     
+    }, [FavoriteUsers]);
 
   const addFavarite = (user: GitHubUser) => {
     if (
