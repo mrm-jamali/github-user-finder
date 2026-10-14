@@ -13,7 +13,7 @@ function Header({ search, setSearch, setSubmittedSearch }: HeaderProps) {
     setSubmittedSearch(search);
   };
   return (
-    <div className="flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-blue-950 via-blue-800 to-blue-500 px-4  text-white sm:gap-5 sm:py-10">
+    <div className="flex flex-col items-center justify-center gap-4 bg-gradient-to-br from-blue-950 via-blue-800 to-blue-500 px-4 pb-6 text-white sm:gap-5 sm:py-10">
       <div className="flex w-full flex-col items-center justify-center gap-4 text-white">
         <FaGithub className="h-12 w-12 sm:h-14 sm:w-14 md:h-[60px] md:w-[60px]" />
 
